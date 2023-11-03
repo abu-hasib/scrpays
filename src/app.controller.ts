@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Book } from '@prisma/client';
 
 @Controller()
 export class AppController {
@@ -8,5 +9,12 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+  @Post()
+  async makeBook(): Promise<Book> {
+    return await this.appService.makeBook({
+      name: 'One',
+      description: 'Describe',
+    });
   }
 }
