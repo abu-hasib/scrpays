@@ -18,4 +18,24 @@ scalar DateTime
 
 type Query {
   books: [Book!]!
+  book(id: String!): Book!
+}
+
+type Mutation {
+  updateBook(input: UpdateBookInput!): Book
+  createBook(input: CreateBookInput!): Book
+  removeBook(id: String!): Book
+}
+
+input UpdateBookInput {
+  id: ID!
+  name: String!
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input CreateBookInput {
+  name: String!
+  description: String!
 }
