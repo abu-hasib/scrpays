@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Req } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Book } from '@prisma/client';
 import { Request } from 'express';
+import { Book } from '@prisma/client';
 
 @Controller()
 export class AppController {
