@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { BooksModule } from './books/books.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { BooksModule } from './books/books.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: true,
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

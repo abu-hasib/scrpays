@@ -5,6 +5,7 @@ const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   await app.listen(port);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }

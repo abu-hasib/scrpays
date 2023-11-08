@@ -1,9 +1,10 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Book } from './models/book.model';
 import { BooksService } from './books.service';
-import { NotFoundException } from '@nestjs/common';
+import { NotFoundException, UseGuards } from '@nestjs/common';
 import { UpdateBookInput } from './update-book.input';
 import { CreateBookInput } from './create-book.input';
+import { AuthGuard } from '@nestjs/passport';
 
 @Resolver(() => Book)
 export class BooksResolver {
