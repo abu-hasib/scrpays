@@ -3,6 +3,7 @@ WORKDIR /.
 COPY package*.json ./
 RUN npm i
 COPY . .
+RUN npm run prisma:generate
 RUN npm run build
 EXPOSE 8080
 CMD [ "node", "dist/main.js" ]

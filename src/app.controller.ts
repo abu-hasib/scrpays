@@ -1,13 +1,15 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Book } from '@prisma/client';
 import { Request } from 'express';
+import { Book } from '@prisma/client';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
   getHello(): string {
     return this.appService.getHello();
   }
